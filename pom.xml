@@ -21,6 +21,7 @@
         <module>jmp-application</module>
         <module>jmp-cloud-service-impl</module>
         <module>jmp-service-rest</module>
+        <module>jmp_cloud_service_data_jpa_impl</module>
     </modules>
 
     <properties>
@@ -44,10 +45,6 @@
             <artifactId>lombok</artifactId>
             <version>1.18.30</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
     </dependencies>
 </project>

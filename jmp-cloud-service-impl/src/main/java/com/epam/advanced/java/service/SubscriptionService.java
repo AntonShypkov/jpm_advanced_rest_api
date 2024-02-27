@@ -30,7 +30,7 @@ public class SubscriptionService implements ISubscriptionService {
         var subscription = Subscription.builder()
                 .id(subscriptionRequest.getId())
                 .user(User.builder().id(subscriptionRequest.getUserId()).build())
-                .startdDate(LocalDate.parse(subscriptionRequest.getStartDate()))
+                .startDate(LocalDate.parse(subscriptionRequest.getStartDate()))
                 .build();
 
         Subscription createdSubscription = subscriptionRepository.create(subscription);
@@ -38,7 +38,7 @@ public class SubscriptionService implements ISubscriptionService {
         return SubscriptionResponseDto.builder()
                 .id(createdSubscription.getId())
                 .userId(createdSubscription.getUser().getId())
-                .startDate(createdSubscription.getStartdDate().toString())
+                .startDate(createdSubscription.getStartDate().toString())
                 .build();
     }
 
@@ -49,14 +49,14 @@ public class SubscriptionService implements ISubscriptionService {
         var subscriptionToUpdate = subscriptionRepository.findById(subscriptionId);
 
         subscriptionToUpdate.setUser(User.builder().id(subscriptionRequest.getUserId()).build());
-        subscriptionToUpdate.setStartdDate(LocalDate.parse(subscriptionRequest.getStartDate()));
+        subscriptionToUpdate.setStartDate(LocalDate.parse(subscriptionRequest.getStartDate()));
 
         Subscription updatedSubscription = subscriptionRepository.update(subscriptionToUpdate);
 
         return SubscriptionResponseDto.builder()
                 .id(updatedSubscription.getId())
                 .userId(updatedSubscription.getUser().getId())
-                .startDate(updatedSubscription.getStartdDate().toString())
+                .startDate(updatedSubscription.getStartDate().toString())
                 .build();
     }
 
@@ -75,7 +75,7 @@ public class SubscriptionService implements ISubscriptionService {
         return SubscriptionResponseDto.builder()
                 .id(subscription.getId())
                 .userId(subscription.getUser().getId())
-                .startDate(subscription.getStartdDate().toString())
+                .startDate(subscription.getStartDate().toString())
                 .build();
     }
 
@@ -85,7 +85,7 @@ public class SubscriptionService implements ISubscriptionService {
                 .map(subscription -> SubscriptionResponseDto.builder()
                         .id(subscription.getId())
                         .userId(subscription.getUser().getId())
-                        .startDate(subscription.getStartdDate().toString())
+                        .startDate(subscription.getStartDate().toString())
                         .build())
                 .collect(Collectors.toList());
     }

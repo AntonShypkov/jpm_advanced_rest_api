@@ -11,6 +11,6 @@ public class Subscription {
 
     private Long id;
     private User user;
-    private LocalDate startdDate;
+    private LocalDate startDate;
 
 }

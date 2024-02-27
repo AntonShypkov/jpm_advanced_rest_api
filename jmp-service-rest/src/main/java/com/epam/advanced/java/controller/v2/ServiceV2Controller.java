@@ -1,8 +1,8 @@
-package com.epam.advanced.java.controller;
+package com.epam.advanced.java.controller.v2;
 
 import com.epam.advanced.java.common.SubscriptionRequestDto;
 import com.epam.advanced.java.common.SubscriptionResponseDto;
-import com.epam.advanced.java.service.SubscriptionService;
+import com.epam.advanced.java.service.SubscriptionV2Service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,40 +19,49 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/study/v1/subscription")
+@RequestMapping("/study/v2/subscription")
 @Slf4j
-public class ServiceController {
+public class ServiceV2Controller {
 
-    private final SubscriptionService subscriptionService;
+    private final SubscriptionV2Service subscriptionV2Service;
 
     @PostMapping
     public SubscriptionResponseDto createSubscription(@RequestBody SubscriptionRequestDto subscriptionRequest) {
-        log.info("Create new subscription with data: {}", subscriptionRequest);
-        return subscriptionService.createSubscription(subscriptionRequest);
+        log.info("V2: Create new subscription with data: {}", subscriptionRequest);
+        return subscriptionV2Service.createSubscription(subscriptionRequest);
     }
 
     @PutMapping("/{subscriptionId}")
     public SubscriptionResponseDto updateSubscription(@PathVariable Long subscriptionId,
                                                       @RequestBody SubscriptionRequestDto subscriptionRequest) {
-        log.info("Update subscription with id {}", subscriptionId);
-        return subscriptionService.updateSubscription(subscriptionId, subscriptionRequest);
+        log.info("V2: Update subscription with id {}", subscriptionId);
+        var response = subscriptionV2Service.updateSubscription(subscriptionId, subscriptionRequest);
+
+        log.info("V2: Response {}", response);
+        return response;
     }
 
     @DeleteMapping("/{subscriptionId}")
     public void deleteSubscription(@PathVariable Long subscriptionId) {
-        log.info("Delete subscription with id {}", subscriptionId);
-        subscriptionService.deleteSubscription(subscriptionId);
+        log.info("V2: Delete subscription with id {}", subscriptionId);
+        subscriptionV2Service.deleteSubscription(subscriptionId);
     }
 
     @GetMapping("/{subscriptionId}")
     public SubscriptionResponseDto getSubscription(@PathVariable Long subscriptionId) {
-        log.info("Get subscription with id {}", subscriptionId);
-        return subscriptionService.getSubscription(subscriptionId);
+        log.info("V2: Get subscription with id {}", subscriptionId);
+        var response = subscriptionV2Service.getSubscription(subscriptionId);
+
+        log.info("V2: Response {}", response);
+        return response;
     }
 
     @GetMapping("/all")
     public List<SubscriptionResponseDto> getAllSubscription() {
-        log.info("Get all existent subscriptions");
-        return subscriptionService.getAllSubscriptions();
+        log.info("V2: Get all existent subscriptions");
+        var response = subscriptionV2Service.getAllSubscriptions();
+
+        log.info("V2: Response {}", response);
+        return response;
     }
 }
