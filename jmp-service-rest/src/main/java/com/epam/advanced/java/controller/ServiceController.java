@@ -27,26 +27,32 @@ public class ServiceController {
 
     @PostMapping
     public SubscriptionResponseDto createSubscription(@RequestBody SubscriptionRequestDto subscriptionRequest) {
+        log.info("Create new subscription with data: {}", subscriptionRequest);
         return subscriptionService.createSubscription(subscriptionRequest);
     }
 
     @PutMapping("/{subscriptionId}")
-    public SubscriptionResponseDto updateSubscription(@PathVariable Long subscriptionId, @RequestBody SubscriptionRequestDto subscriptionRequest) {
+    public SubscriptionResponseDto updateSubscription(@PathVariable Long subscriptionId,
+                                                      @RequestBody SubscriptionRequestDto subscriptionRequest) {
+        log.info("Update subscription with id {}", subscriptionId);
         return subscriptionService.updateSubscription(subscriptionId, subscriptionRequest);
     }
 
     @DeleteMapping("/{subscriptionId}")
     public void deleteSubscription(@PathVariable Long subscriptionId) {
+        log.info("Delete subscription with id {}", subscriptionId);
         subscriptionService.deleteSubscription(subscriptionId);
     }
 
     @GetMapping("/{subscriptionId}")
     public SubscriptionResponseDto getSubscription(@PathVariable Long subscriptionId) {
+        log.info("Get subscription with id {}", subscriptionId);
         return subscriptionService.getSubscription(subscriptionId);
     }
 
     @GetMapping("/all")
     public List<SubscriptionResponseDto> getAllSubscription() {
+        log.info("Get all existent subscriptions");
         return subscriptionService.getAllSubscriptions();
     }
 }

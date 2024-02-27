@@ -26,27 +26,31 @@ public class UserController {
 
     @PostMapping
     public UserResponseDto createUser(@RequestBody UserRequestDto userRequest){
+        log.info("Create new user with data: {}", userRequest);
         return userService.createUser(userRequest);
     }
 
     @PutMapping("/{userId}")
     public UserResponseDto updateUser(@PathVariable Long userId, @RequestBody UserRequestDto userRequest){
+        log.info("Update user with id {}", userId);
         return userService.updateUser(userId, userRequest);
     }
 
     @DeleteMapping("/{userId}")
     public void deleteUser(@PathVariable Long userId){
+        log.info("Delete user with id {}", userId);
         userService.deleteUser(userId);
     }
 
     @GetMapping("/{userId}")
     public UserResponseDto getUser(@PathVariable Long userId){
+        log.info("Get user with id {}", userId);
         return userService.getUser(userId);
     }
 
     @GetMapping("/all")
     public List<UserResponseDto> getAllUser(){
-        log.info("Getting all existent users");
+        log.info("Get all existent users");
         return userService.getAllUsers();
     }
 }
