@@ -4,5 +4,8 @@ spring:
     driver-class-name: org.postgresql.Driver
     password: ${PG_PASSWD}
     username: ${PG_USER}
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
   jpa:
     database: postgresql

@@ -3,6 +3,7 @@ package com.epam.advanced.java.controller.v1;
 import com.epam.advanced.java.common.UserRequestDto;
 import com.epam.advanced.java.common.UserResponseDto;
 import com.epam.advanced.java.service.UserService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@Api(tags = {"V1 User Service (runtime in-memory storage)"})
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/study/v1/user")
